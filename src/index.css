@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ===== Base App Styling ===== */
+html, body, #root {
+  height: 100%;
+  background: linear-gradient(180deg, #0b0d0f 0%, #121416 100%);
+  color: #e6eef6;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Headings use Poppins font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+}
+
+/* Accent button style */
+.btn-accent {
+  background: #ff7b00;
+  color: #0b0b0b;
+  transition: all 0.2s ease;
+}
+.btn-accent:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+
+/* Reusable card style */
+.card {
+  background: rgba(20, 23, 26, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  border-radius: 1rem;
+}
+
+/* Small orange label text */
+.kicker {
+  color: #ff7b00;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+html {
+  scroll-behavior: smooth;
+}
