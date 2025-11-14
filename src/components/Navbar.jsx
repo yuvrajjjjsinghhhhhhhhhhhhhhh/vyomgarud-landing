@@ -1,65 +1,81 @@
-import React from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { HiMenu, HiX } from "react-icons/hi";
 
 export default function Navbar() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Helper function to handle scroll navigation
-  const handleScrollTo = (id) => {
-    if (location.pathname !== "/") {
-      // If we’re on another page (like /about), go home first
-      navigate("/", { replace: false });
-
-      // Wait a bit for the Home to load, then scroll
-      setTimeout(() => {
-        const section = document.getElementById(id);
-        if (section) section.scrollIntoView({ behavior: "smooth" });
-      }, 400);
-    } else {
-      // Already on home page, just scroll directly
-      const section = document.getElementById(id);
-      if (section) section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#0f1214] border-b border-gray-800 z-50">
-      <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
-        <Link to="/" className="text-2xl font-bold text-white">
+    <nav className="bg-[#0d0f10] text-white fixed top-0 left-0 w-full z-50 shadow-lg">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        
+        {/* Logo */}
+        <Link to="/" className="text-3xl font-extrabold">
           Vyom<span className="text-[#ff7b00]">Garud</span>
         </Link>
 
-        <div className="flex gap-6 text-gray-300">
-          <Link to="/" className="hover:text-[#ff7b00] transition">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-10 text-lg">
+          <Link to="/" className="hover:text-[#ff7b00] transition">Home</Link>
+          <Link to="/about" className="hover:text-[#ff7b00] transition">About</Link>
+          <a href="#capabilities" className="hover:text-[#ff7b00] transition">Capabilities</a>
+          <a href="#highlights" className="hover:text-[#ff7b00] transition">Highlights</a>
+          <a href="#contact" className="hover:text-[#ff7b00] transition">Contact</a>
+        </div>
+
+        {/* Mobile Menu Icon */}
+        <button
+          className="md:hidden text-3xl"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <HiX /> : <HiMenu />}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {open && (
+        <div className="md:hidden bg-[#0d0f10] px-6 pb-4 space-y-3 text-lg">
+          <Link
+            to="/"
+            onClick={() => setOpen(false)}
+            className="block hover:text-[#ff7b00]"
+          >
             Home
           </Link>
 
-          <Link to="/about" className="hover:text-[#ff7b00] transition">
+          <Link
+            to="/about"
+            onClick={() => setOpen(false)}
+            className="block hover:text-[#ff7b00]"
+          >
             About
           </Link>
 
-          {/* Scroll Links */}
-          <button
-            onClick={() => handleScrollTo("capabilities")}
-            className="hover:text-[#ff7b00] transition"
+          <a
+            href="#capabilities"
+            onClick={() => setOpen(false)}
+            className="block hover:text-[#ff7b00]"
           >
             Capabilities
-          </button>
-          <button
-            onClick={() => handleScrollTo("highlights")}
-            className="hover:text-[#ff7b00] transition"
+          </a>
+
+          <a
+            href="#highlights"
+            onClick={() => setOpen(false)}
+            className="block hover:text-[#ff7b00]"
           >
             Highlights
-          </button>
-          <button
-            onClick={() => handleScrollTo("contact")}
-            className="hover:text-[#ff7b00] transition"
+          </a>
+
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="block hover:text-[#ff7b00]"
           >
             Contact
-          </button>
+          </a>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

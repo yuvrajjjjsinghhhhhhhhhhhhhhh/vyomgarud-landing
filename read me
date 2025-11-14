@@ -1,0 +1,22 @@
+# VyomGarud — UAV Systems Landing Page
+
+A modern, responsive landing page built with **React + Vite + TailwindCSS + Framer Motion**.
+
+## 🚀 Features
+- Hero section with smooth fade & scroll animations  
+- About page with route-based navigation  
+- Smooth scrolling between sections (Capabilities, Highlights, Contact)  
+- Responsive design  
+- Deployed-ready setup with Vite  
+
+---
+
+## 🛠️ Tech Stack
+- **React** (Vite)
+- **Tailwind CSS**
+- **Framer Motion**
+- **React Router DOM**
+
+---
+
+
